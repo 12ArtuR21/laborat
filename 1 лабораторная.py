@@ -12,10 +12,13 @@ WORDS_ONES = ['ноль', 'один', 'два', 'три', 'четыре', 'пя�
 def num_to_word(sr_num):
         return WORDS_ONES[sr_num]
 
+def sr_num(list):
+    list.sort()
+    sr = (int(list[0]) + int(list[2])) // 2
+    return sr
+
 for element in file:
     string_element = str(element)
     if int(element) % 2 == 0 and string_element[2] == '1':
         spisok = [string_element[0], string_element[1], string_element[3]]
-        spisok.sort()
-        sr_num = (int(spisok[0]) + int(spisok[2])) // 2
-        print('Цифры числа: ', *spisok, '.', ' Среднее число между минимальным и максимальным: ', sr_num, ' (', num_to_word(sr_num), ')', sep="")
+        print(element, '. Цифры числа: ', *spisok, '. Среднее число между минимальным и максимальным: ', sr_num(spisok),' (',num_to_word(sr_num(spisok)), ')', sep="")
